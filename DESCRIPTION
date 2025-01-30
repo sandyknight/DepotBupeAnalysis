@@ -1,0 +1,21 @@
+Package: DepotBupeAnalysis
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.1.9000
+Authors@R: 
+    person("Sandy", "Knight", , "first.last@example.com", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+	data.table,
+	dplyr,
+	jsonlite,
+	ggplot2,
+	flextable
+Suggests: 
+    knitr,
+    rmarkdown,
+    afcharts
+VignetteBuilder: knitr
