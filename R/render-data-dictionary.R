@@ -11,9 +11,13 @@ render_data_dictionary <-
     dd <- get_data_dictionary()
 
     rgx <-
-      paste(c(colnames(sir_df),
-              colnames(main_df)),
-            collapse = "|")
+      paste(
+        c(
+          colnames(sir_df),
+          colnames(main_df)
+        ),
+        collapse = "|"
+      )
 
     dd <-
       dd[grep(pattern = rgx, x = column, perl = TRUE), ]
@@ -21,4 +25,4 @@ render_data_dictionary <-
     data.table::setnames(dd, new = snakecase::to_sentence_case)
 
     gt::gt(dd)
-}
+  }

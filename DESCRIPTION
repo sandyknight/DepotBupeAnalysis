@@ -13,9 +13,8 @@ Imports:
 	dplyr,
 	jsonlite,
 	ggplot2,
+	assertthat,
 	flextable
 Suggests: 
     knitr,
-    rmarkdown,
-    afcharts
-VignetteBuilder: knitr
+    rmarkdown

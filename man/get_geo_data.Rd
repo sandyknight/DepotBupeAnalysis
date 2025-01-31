@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-geo-data.R
 \name{get_geo_data}
 \alias{get_geo_data}
-\title{Combine and de-duplicate the 23 and 24 UTLA data}
+\title{Downdload, combine and de-duplicate the 23 and 24 UTLA data}
 \usage{
 get_geo_data()
 }
@@ -10,8 +10,11 @@ get_geo_data()
 data.table containing UTLA codes and names for England
 }
 \description{
-Retrieves UTLA names and codes from official ArcGIS REST API
+Retrieves UTLA names and codes from Open Geography Portal ArcGIS
+REST API
 }
 \details{
-Filters for English UTLAs (codes starting with 'E')
+For some reason the data headers for 2023 and 2024 have different
+naming conventions so that needs to be handled.
+Also filters for English UTLAs (codes starting with 'E')
 }

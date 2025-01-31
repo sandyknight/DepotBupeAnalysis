@@ -15,22 +15,28 @@ get_data_dictionary <-
     }
 
     dd_main <-
-      openxlsx::read.xlsx(xlsxFile = "data/RAND-data-dictionary.xlsx",
-                          sheet = "Main table - journeys",
-                          cols = c(1, 2, 4:6)) |>
+      openxlsx::read.xlsx(
+        xlsxFile = "data/RAND-data-dictionary.xlsx",
+        sheet = "Main table - journeys",
+        cols = c(1, 2, 4:6)
+      ) |>
       janitor::clean_names() |>
       dplyr::rename("column" = column_name)
 
     dd_sir <-
-      openxlsx::read.xlsx(xlsxFile = "data/RAND-data-dictionary.xlsx",
-                          sheet = "SIR table",
-                          cols = c(1:5)) |>
+      openxlsx::read.xlsx(
+        xlsxFile = "data/RAND-data-dictionary.xlsx",
+        sheet = "SIR table",
+        cols = c(1:5)
+      ) |>
       janitor::clean_names()
 
     dd_top <-
-      openxlsx::read.xlsx(xlsxFile = "data/RAND-data-dictionary.xlsx",
-                          sheet = "TOP table",
-                          cols = c(1:5)) |>
+      openxlsx::read.xlsx(
+        xlsxFile = "data/RAND-data-dictionary.xlsx",
+        sheet = "TOP table",
+        cols = c(1:5)
+      ) |>
       janitor::clean_names()
 
     data_dictionary <- data.table::rbindlist(l = list(dd_main, dd_sir, dd_top))

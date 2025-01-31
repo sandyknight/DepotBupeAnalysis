@@ -13,7 +13,7 @@ validate_rate <- function(df) {
     all(df$lab_rate >= 0 & df$lab_rate <= 1),
     msg = "Invalid rates detected"
   )
-  
+
   # Verify rate calculation matches raw counts
   df[, {
     calculated_rate <- phbudi_any / (phbudi_any + other_ost)

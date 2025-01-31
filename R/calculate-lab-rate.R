@@ -8,7 +8,6 @@
 #' @export
 calculate_lab_rate <-
   function(dt, groups = "year") {
-
     dt <-
       dt[, .(
         phbudi_any = sum(phbudi_any),
@@ -18,5 +17,4 @@ calculate_lab_rate <-
     dt[, lab_rate := phbudi_any / (phbudi_any + other_ost)]
 
     return(dt)
-
   }

@@ -15,9 +15,8 @@ validate_aggregation(final_df, aggregated_df)
 Invisible NULL, throws assertion error if validation fails
 }
 \description{
-Ensures totals are preserved through aggregation steps
+Ensures totals are correct through aggregation steps
 }
 \details{
-Checks LAB treatment totals match before and after aggregation
-Verifies total patient counts are preserved
+This validates the method for taking an annual count of LAB
 }

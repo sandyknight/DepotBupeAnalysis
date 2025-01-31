@@ -7,8 +7,6 @@
 #' Formats all values as percentages with 1 decimal place
 #' @export
 create_summary_table <- function(summary_stats) {
-  
-
   data.table::setnames(summary_stats, old = "phbudi_any", new = "LAB_count", skip_absent = TRUE)
 
   nms <- names(summary_stats)
@@ -16,24 +14,28 @@ create_summary_table <- function(summary_stats) {
   nms <- gsub("_", " ", nms)
 
   sentence_case_helper <-
-    function(i) {paste0(toupper(substr(i, 1,1)), substr(i, 2, nchar(i)))}
+    function(i) {
+      paste0(toupper(substr(i, 1, 1)), substr(i, 2, nchar(i)))
+    }
 
-  nms <- data.table::fcase(grepl("lab",nms),
-                    gsub("lab", "LAB", nms),
-                    grepl("ost",nms),
-                    gsub("ost", "OST", nms),
-                    grepl("q",nms),
-                    gsub("q", "Q", nms),
-                    default = nms)
+  nms <- data.table::fcase(grepl("lab", nms),
+    gsub("lab", "LAB", nms),
+    grepl("ost", nms),
+    gsub("ost", "OST", nms),
+    grepl("q", nms),
+    gsub("q", "Q", nms),
+    default = nms
+  )
   nms <- sapply(nms, sentence_case_helper)
 
   data.table::setnames(summary_stats, nms)
 
   groups <- grep("Tranche|Year|count|All",
-                names(summary_stats),
-                perl = TRUE,
-                value = TRUE,
-                ignore.case = TRUE)
+    names(summary_stats),
+    perl = TRUE,
+    value = TRUE,
+    ignore.case = TRUE
+  )
 
   summary_stats <-
     summary_stats[, lapply(.SD, function(x) sprintf("    %.2f%%", x * 100)), by = groups, .SDcols = c("LAB rate", "Q1", "Q2", "Q3", "Max", "IQR")]

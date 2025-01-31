@@ -11,11 +11,9 @@
 #' @export
 create_final_df <-
   function(sir_df, main_df) {
-
     final_df <-
       data.table::merge.data.table(sir_df, main_df, by = c("client_random_id", "n_jy"))
 
 
     return(final_df)
-
-}
+  }
